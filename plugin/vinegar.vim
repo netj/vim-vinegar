@@ -37,6 +37,9 @@ endif
 let s:netrw_up = ''
 let s:netrw_sort_options_set = 0
 
+" Vim's strlen works fine while netrw's Strlen is broken
+if has("multi_byte") | let g:netrw_xstrlen = 0 | endif
+
 nnoremap <silent> <Plug>VinegarUp :call <SID>opendir('edit')<CR>
 if empty(maparg('-', 'n'))
   nmap - <Plug>VinegarUp
